@@ -14,10 +14,5 @@ class MainApp : Application(), AnkoLogger {
     override fun onCreate() {
         super.onCreate()
         info("Booking started")
-
-        //bookings.add(BookingModel("One", "About one..."))
-        //bookings.add(BookingModel("Two", "About two..."))
-        //bookings.add(BookingModel("Three", "About three..."))
-
     }
 }
