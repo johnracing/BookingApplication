@@ -8,7 +8,6 @@ import org.wit.booking.models.BookingModel
 
 class MainApp : Application(), AnkoLogger {
 
-    //val bookings = ArrayList<BookingModel>()
     val bookings = BookingMemStore()
 
     override fun onCreate() {
