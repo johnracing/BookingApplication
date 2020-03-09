@@ -19,6 +19,7 @@ class BookingMemStore : BookingStore, AnkoLogger {
 
 
     override fun create(booking: BookingModel) {
+        booking.id=getId()
         bookings.add(booking)
         logAll()
     }

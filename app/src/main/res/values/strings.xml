@@ -6,4 +6,6 @@
     <string name="hint_bookingContact">Contact</string>
     <string name="menu_addBooking">Add</string>
     <string name="menu_cancelBooking">Cancel</string>
+    <string name="enter_booking_title"> Please enter a Booking Title </string>
+    <string name="save_booking"> Save Booking </string>
 </resources>
