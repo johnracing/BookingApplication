@@ -1,5 +1,6 @@
 package org.wit.booking.activities
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -45,6 +46,12 @@ class BookingListActivity : AppCompatActivity(), BookingListener {
 
     override fun onBookingClick(booking: BookingModel) {
         startActivityForResult(intentFor<BookingActivity>().putExtra("booking_edit", booking), 0)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        //recyclerView is a widget in activity_placemark_list.xml
+        recyclerView.adapter?.notifyDataSetChanged()
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }
 

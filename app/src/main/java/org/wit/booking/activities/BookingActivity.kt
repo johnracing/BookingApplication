@@ -21,32 +21,41 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_booking)
         app = application as MainApp
-
+        var edit1 = false
         toolbarAdd.title = title
         setSupportActionBar(toolbarAdd)
 
         if (intent.hasExtra("booking_edit")) {
+            edit1 = true
             booking = intent.extras.getParcelable<BookingModel>("booking_edit")
             bookingTitle.setText(booking.title)
             bookingCompany.setText(booking.company)
             bookingContact.setText(booking.contact)
+            btnAdd.setText(R.string.save_booking)
         }
 
         btnAdd.setOnClickListener() {
             booking.title = bookingTitle.text.toString()
             booking.company = bookingCompany.text.toString()
             booking.contact = bookingContact.text.toString()
-            if (booking.title.isNotEmpty()) {
-                //app.bookings.add(booking.copy())
-                app.bookings.create(booking.copy())
-                info("add Button Pressed: $bookingTitle")
-                //app.bookings.forEach { info("add Button Pressed: ${it.title}, ${it.company}, ${it.contact}")}
-                //app.bookings.findAll().forEach{ info("add Button Pressed: ${it}")}
+
+            if (booking.title.isEmpty()) {
+                toast(R.string.enter_booking_title)
+            } else {
+                if (edit1){
+
+                  app.bookings.update(booking.copy())
+
+                }
+                else {
+
+                    app.bookings.create(booking.copy())
+
+                }
+
+
                 setResult(AppCompatActivity.RESULT_OK)
                 finish()
-            }
-            else {
-                toast ("Please Enter a title")
             }
         }
 
