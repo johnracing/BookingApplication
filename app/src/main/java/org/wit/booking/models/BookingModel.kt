@@ -8,4 +8,6 @@ import kotlinx.android.parcel.Parcelize
 data class BookingModel(var id: Long = 0,
                         var title: String = "",
                         var company: String = "",
-                        var contact: String = ""): Parcelable
+                        var contact: String = "",
+                        var image: String = ""
+): Parcelable
