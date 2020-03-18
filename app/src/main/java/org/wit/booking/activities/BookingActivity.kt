@@ -8,6 +8,7 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_booking.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import org.wit.booking.models.BookingModel
 import org.wit.booking.R
@@ -15,18 +16,23 @@ import org.wit.booking.helpers.readImage
 import org.wit.booking.helpers.readImageFromPath
 import org.wit.booking.helpers.showImagePicker
 import org.wit.booking.main.MainApp
+import org.wit.booking.models.Location
 
 class BookingActivity : AppCompatActivity(), AnkoLogger {
 
-    val IMAGE_REQUEST = 1
     var booking = BookingModel()
     lateinit var app: MainApp
+    val IMAGE_REQUEST = 1
+    val LOCATION_REQUEST = 2
+    var location = Location(52.245696, -7.139102, 15f)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_booking)
         app = application as MainApp
         var edit = false
+
         toolbarAdd.title = title
         setSupportActionBar(toolbarAdd)
 
@@ -41,6 +47,11 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
                 chooseImage.setText(R.string.change_booking_image)
             }
             btnAdd.setText(R.string.save_booking)
+        }
+
+        bookingLocation.setOnClickListener {
+            startActivityForResult(intentFor<MapsActivity>().putExtra("location", location), LOCATION_REQUEST)
+            info ("Set Location Pressed")
         }
 
         btnAdd.setOnClickListener() {
@@ -62,13 +73,15 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
             }
         }
 
+
+
         chooseImage.setOnClickListener {
             showImagePicker(this, IMAGE_REQUEST)
             info("Select image")
         }
 
 
-        }
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_booking, menu)
@@ -84,7 +97,7 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?){
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
             IMAGE_REQUEST -> {
@@ -92,6 +105,11 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
                     booking.image = data.getData().toString()
                     bookingImage.setImageBitmap(readImage(this, resultCode, data))
                     chooseImage.setText(R.string.change_booking_image)
+                }
+            }
+            LOCATION_REQUEST -> {
+                if (data != null) {
+                    location = data.extras.getParcelable<Location>("location")
                 }
             }
         }
