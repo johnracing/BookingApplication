@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.card_booking.view.*
 import org.wit.booking.R
+import org.wit.booking.helpers.readImageFromPath
 import org.wit.booking.models.BookingModel
 import org.wit.booking.activities.BookingAdapter.MainHolder as MainHolder
 
@@ -33,6 +34,7 @@ class BookingAdapter constructor(private var bookings: List<BookingModel>,
         fun bind(booking: BookingModel,  listener : BookingListener) {
             itemView.bookingTitle.text = booking.title
             itemView.bookingCompany.text = booking.company
+            itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, booking.image))
             itemView.setOnClickListener { listener.onBookingClick(booking) }
         }
     }

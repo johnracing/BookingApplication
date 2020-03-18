@@ -10,4 +10,6 @@
     <string name="save_booking"> Save Booking </string>
     <string name="button_addImage"> Add Image </string>
     <string name="select_booking_image">Select event image</string>
+    <string name="change_booking_image">Change event image</string>
+    <string name="booking_image">event image</string>
 </resources>

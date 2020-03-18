@@ -37,6 +37,9 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
             bookingCompany.setText(booking.company)
             bookingContact.setText(booking.contact)
             bookingImage.setImageBitmap(readImageFromPath(this, booking.image))
+            if (booking.image != null) {
+                chooseImage.setText(R.string.change_booking_image)
+            }
             btnAdd.setText(R.string.save_booking)
         }
 
@@ -88,6 +91,7 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
                 if (data != null) {
                     booking.image = data.getData().toString()
                     bookingImage.setImageBitmap(readImage(this, resultCode, data))
+                    chooseImage.setText(R.string.change_booking_image)
                 }
             }
         }
