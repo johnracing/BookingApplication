@@ -30,6 +30,7 @@ class BookingMemStore : BookingStore, AnkoLogger {
             foundBooking.title = booking.title
             foundBooking.company = booking.company
             foundBooking.contact = booking.contact
+            foundBooking.image = booking.image
             logAll()
         }
     }
