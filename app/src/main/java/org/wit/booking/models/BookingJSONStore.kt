@@ -46,6 +46,10 @@ class BookingJSONStore : BookingStore, AnkoLogger {
             foundBooking.title = booking.title
             foundBooking.company = booking.company
             foundBooking.contact = booking.contact
+            foundBooking.mentor = booking.mentor
+            foundBooking.notes = booking.notes
+            foundBooking.date = booking.date
+            foundBooking.time = booking.time
             foundBooking.image = booking.image
             foundBooking.lat = booking.lat
             foundBooking.lng = booking.lng
