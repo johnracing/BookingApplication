@@ -38,6 +38,10 @@ class BookingMemStore : BookingStore, AnkoLogger {
         }
     }
 
+    override fun delete(booking: BookingModel) {
+        bookings.remove(booking)
+    }
+
     fun logAll() {
         bookings.forEach{ info("${it}") }
     }

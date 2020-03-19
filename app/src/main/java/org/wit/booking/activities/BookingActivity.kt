@@ -101,6 +101,15 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
                 finish()
             }
         }
+        //************************************************************
+        when (item?.itemId) {
+            R.id.item_delete -> {
+                //booking.delete()
+                info("try to delete")
+            }
+        }
+
+
         return super.onOptionsItemSelected(item)
     }
 

@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">MONERE Bookings</string>
+    <string name="app_name">MONERE Seminars</string>
     <string name="button_addBooking">Add Event</string>
-    <string name="hint_bookingTitle">Booking Title</string>
+    <string name="hint_bookingTitle">Event Title</string>
     <string name="hint_bookingCompany">Company</string>
     <string name="hint_bookingContact">Contact</string>
     <string name="menu_addBooking">Add</string>
+    <string name="menu_deleteBooking">Delete</string>
     <string name="menu_cancelBooking">Cancel</string>
     <string name="enter_booking_title"> Please enter a Booking Title </string>
     <string name="save_booking"> Save Booking </string>

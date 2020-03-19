@@ -4,7 +4,7 @@ import android.app.Application
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.wit.booking.models.BookingMemStore
-import org.wit.booking.models.BookingModel
+import org.wit.booking.models.BookingJSONStore
 import org.wit.booking.models.BookingStore
 
 class MainApp : Application(), AnkoLogger {
@@ -14,7 +14,7 @@ class MainApp : Application(), AnkoLogger {
 
     override fun onCreate() {
         super.onCreate()
-        bookings = BookingMemStore()
+        bookings = BookingJSONStore(applicationContext)
         info("Booking started")
     }
 }
