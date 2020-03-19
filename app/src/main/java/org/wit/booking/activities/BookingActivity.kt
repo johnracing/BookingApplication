@@ -24,7 +24,7 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
     lateinit var app: MainApp
     val IMAGE_REQUEST = 1
     val LOCATION_REQUEST = 2
-    var location = Location(52.245696, -7.139102, 15f)
+    // var location = Location(52.245696, -7.139102, 15f)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +43,7 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
             bookingCompany.setText(booking.company)
             bookingContact.setText(booking.contact)
             bookingImage.setImageBitmap(readImageFromPath(this, booking.image))
+
             if (booking.image != null) {
                 chooseImage.setText(R.string.change_booking_image)
             }
@@ -50,6 +51,12 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
         }
 
         bookingLocation.setOnClickListener {
+            val location = Location(52.245696, -7.139102, 15f)
+            if (booking.zoom != 0f) {
+                location.lat =  booking.lat
+                location.lng = booking.lng
+                location.zoom = booking.zoom
+            }
             startActivityForResult(intentFor<MapsActivity>().putExtra("location", location), LOCATION_REQUEST)
             info ("Set Location Pressed")
         }
@@ -109,7 +116,10 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
             }
             LOCATION_REQUEST -> {
                 if (data != null) {
-                    location = data.extras.getParcelable<Location>("location")
+                    val location = data.extras.getParcelable<Location>("location")
+                    booking.lat = location.lat
+                    booking.lng = location.lng
+                    booking.zoom = location.zoom
                 }
             }
         }

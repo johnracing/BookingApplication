@@ -21,15 +21,14 @@ class BookingListActivity : AppCompatActivity(), BookingListener {
         setContentView(R.layout.activity_booking_list)
         app = application as MainApp
 
-        toolbarMain.title = title
-        setSupportActionBar(toolbarMain)
-
-
-
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         //recyclerView.adapter = BookingAdapter(app.bookings)
-        recyclerView.adapter = BookingAdapter(app.bookings.findAll(),this)
+        //recyclerView.adapter = BookingAdapter(app.bookings.findAll(),this)
+        loadBookings()
+
+        toolbarMain.title = title
+        setSupportActionBar(toolbarMain)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -49,9 +48,18 @@ class BookingListActivity : AppCompatActivity(), BookingListener {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        //recyclerView is a widget in activity_placemark_list.xml
-        recyclerView.adapter?.notifyDataSetChanged()
+        loadBookings()
+        //recyclerView.adapter?.notifyDataSetChanged()
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    private fun loadBookings() {
+        showBookings(app.bookings.findAll())
+    }
+
+    fun showBookings (bookings: List<BookingModel>) {
+        recyclerView.adapter = BookingAdapter(bookings, this)
+        recyclerView.adapter?.notifyDataSetChanged()
     }
 }
 
