@@ -43,6 +43,11 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
             bookingTitle.setText(booking.title)
             bookingCompany.setText(booking.company)
             bookingContact.setText(booking.contact)
+            bookingMentor.setText(booking.mentor)
+            bookingNotes.setText(booking.notes)
+            bookingTime.setText(booking.time)
+            bookingDate.setText(booking.date)
+
             bookingImage.setImageBitmap(readImageFromPath(this, booking.image))
 
             if (booking.image != null) {
@@ -66,6 +71,11 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
             booking.title = bookingTitle.text.toString()
             booking.company = bookingCompany.text.toString()
             booking.contact = bookingContact.text.toString()
+            booking.mentor = bookingMentor.text.toString()
+            booking.notes = bookingNotes.text.toString()
+
+            booking.date = bookingDate.text.toString()
+            booking.time = bookingTime.text.toString()
 
             if (booking.title.isEmpty()) {
                 toast(R.string.enter_booking_title)
