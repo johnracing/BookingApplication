@@ -20,6 +20,7 @@ import org.wit.booking.models.Location
 
 class BookingActivity : AppCompatActivity(), AnkoLogger {
 
+    var edit=false;
     var booking = BookingModel()
     lateinit var app: MainApp
     val IMAGE_REQUEST = 1
@@ -31,7 +32,7 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_booking)
         app = application as MainApp
-        var edit = false
+
 
         toolbarAdd.title = title
         setSupportActionBar(toolbarAdd)
@@ -92,23 +93,21 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_booking, menu)
+        if (edit && menu != null) menu.getItem(0).setVisible(true)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
+            R.id.item_delete -> {
+                app.bookings.delete(booking)
+                info("deleting booking")
+                finish()
+            }
             R.id.item_cancel -> {
                 finish()
             }
         }
-        //************************************************************
-        when (item?.itemId) {
-            R.id.item_delete -> {
-                //booking.delete()
-                info("try to delete")
-            }
-        }
-
 
         return super.onOptionsItemSelected(item)
     }

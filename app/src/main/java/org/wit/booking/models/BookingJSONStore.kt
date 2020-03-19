@@ -40,7 +40,8 @@ class BookingJSONStore : BookingStore, AnkoLogger {
 
 
     override fun update(booking: BookingModel) {
-        var foundBooking: BookingModel? = bookings.find { p -> p.id == booking.id }
+        val bookingsList = findAll() as ArrayList<BookingModel>
+        var foundBooking: BookingModel? = bookingsList.find { p -> p.id == booking.id }
         if (foundBooking != null) {
             foundBooking.title = booking.title
             foundBooking.company = booking.company
@@ -49,8 +50,8 @@ class BookingJSONStore : BookingStore, AnkoLogger {
             foundBooking.lat = booking.lat
             foundBooking.lng = booking.lng
             foundBooking.zoom = booking.zoom
-            serialize()
         }
+        serialize()
     }
 
     override fun delete(booking: BookingModel) {
@@ -67,5 +68,4 @@ class BookingJSONStore : BookingStore, AnkoLogger {
         val jsonString = read(context, JSON_FILE)
         bookings = Gson().fromJson(jsonString, listType)
     }
-
 }
