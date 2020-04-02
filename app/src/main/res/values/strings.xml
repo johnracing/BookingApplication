@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">MONERE Seminars</string>
-    <string name="button_addBooking">Add Event</string>
+    <string name="button_addBooking">\tAdd Event</string>
 
-    <string name="hint_bookingTitle">Event Title</string>
-    <string name="hint_bookingCompany">Company Name</string>
-    <string name="hint_bookingContact">Client Contact</string>
-    <string name="hint_bookingMentor">MONERE Mentor</string>
-    <string name="hint_bookingNotes">Notes</string>
-    <string name="hint_bookingDate">Date</string>
-    <string name="hint_bookingTime">Time</string>
+    <string name="hint_bookingTitle">\tEvent Title</string>
+    <string name="hint_bookingCompany">\tCompany Name</string>
+    <string name="hint_bookingContact">\tClient Contact</string>
+    <string name="hint_bookingMentor">\tMONERE Mentor</string>
+    <string name="hint_bookingNotes">\tNotes</string>
+    <string name="hint_bookingDate">\tDate</string>
+    <string name="hint_bookingTime">\tTime</string>
 
     <string name="menu_addBooking">Add</string>
     <string name="menu_deleteBooking">Delete</string>
@@ -16,9 +16,9 @@
     <string name="enter_booking_title"> Please enter an Event Title </string>
     <string name="save_booking"> Save Booking </string>
     <string name="button_addImage"> Add Image </string>
-    <string name="select_booking_image">Select event image</string>
-    <string name="change_booking_image">Change event image</string>
-    <string name="booking_image">event image</string>
-    <string name="button_location">Set Location</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="select_booking_image"> Select event image</string>
+    <string name="change_booking_image"> Change event image</string>
+    <string name="booking_image"> event image</string>
+    <string name="button_location"> Set Location</string>
+    <string name="title_activity_maps"> Map</string>
 </resources>
