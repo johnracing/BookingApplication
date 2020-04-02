@@ -37,6 +37,8 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
         toolbarAdd.title = title
         setSupportActionBar(toolbarAdd)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         if (intent.hasExtra("booking_edit")) {
             edit = true
             booking = intent.extras.getParcelable<BookingModel>("booking_edit")
@@ -117,6 +119,13 @@ class BookingActivity : AppCompatActivity(), AnkoLogger {
             R.id.item_cancel -> {
                 finish()
             }
+
+            android.R.id.home -> {
+                info("Back arrow pressed")
+                finish()
+            }
+
+
         }
 
         return super.onOptionsItemSelected(item)
